@@ -10,13 +10,13 @@
     href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
     rel="stylesheet">
   
-  <link rel="stylesheet" href="../Styles/Home/homestyles.css">
+  <link rel="stylesheet" href="../Styles/Home/home.css">
   <title>Home</title>
 </head>
 <body>
   <header>
-    <img id="main-banner" src="./Images/carBanner.jpg" alt="banner carro"> 
-    <nav id="main-nav">
+    <img src="./Images/carBanner.jpg" alt="banner carro"> 
+    <nav>
       <a>Empresa</a>
       <a>Contato</a>
       <a>Intranet</a>
@@ -26,7 +26,9 @@
   <form name="form" method="POST" action="" enctype="multipart/form">
     <div id="search-wrapper">
       <input list="data" type="text" name="search" value="">
-      <img src="./Images/search.svg" alt="ícone de pesquisa">
+      <button type="submit" name="submit_button" value="submit">
+        <img src="./Images/search.svg" alt="ícone de pesquisa">
+      </button>
       <datalist id="data">
         <option value="teste">
         <option value="aaaaa">
@@ -34,12 +36,11 @@
         <option value="ccccc">
         <option value="ddddd">
       </datalist>
-      <!-- <nav >
-        <li>Modelo</li>
-        <li>Marca</li>
-      </nav> -->
     </div>
-    <input type="submit" name="submit_button" value="gravar" id="submit-button">
+    <nav id="search-nav">
+      <button id="model-button-search-nav">Modelo</button>
+      <button id="brand-button-search-nav">Marca</button>
+    </nav>
   </form>
 </body>
 </html>
