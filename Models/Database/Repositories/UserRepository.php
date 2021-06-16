@@ -1,14 +1,13 @@
 <?php
 
 require('../Entities/ITable.php');
-require('../../Utils/HandleImage/index.php');
-require('../../Utils/Bcrypt/index.php');
+// require('../../Utils/HandleImage/index.php');
+// require('../../Utils/Bcrypt/index.php');
 
 class UserRepository implements ITable 
 {
-    public function __construct($connection, $database) {
+    public function __construct($connection) {
         $this->connection = $connection;
-        $this->database = $database;
     }
 
     private function makeInsertQuery($user) {
@@ -37,34 +36,43 @@ class UserRepository implements ITable
             </scripts>
             <?php
         } else {
-            $sql = "insert into usuario (";
-            $values = "";
+            // $sql = "insert into usuario (";
+            // $values = "";
 
-            foreach($user as $key=>$value) {
-                $sql = $sql.", ".$key;
-                $values = $values.", ".$value;
-            }
+            // foreach($user as $key=>$value) {
+            //     $sql = $sql.", ".$key;
+            //     $values = $values.", ".$value;
+            // }
 
-            $sql = $sql.")"." values(".$values.")";
+            // $sql = $sql.")"." values(".$values.")";
+            
+            $sql = "insert into usuario () values ('$user->name', '$user->login', '$user->password', '$user->photo')";
 
             return $sql;
         }
     }
 
+    public function test() {
+        echo "test";
+    }
+
     public function insert($user) {
         try {
-            $sql = $this->makeInsertQuery($user);
+            //$sql = $this->makeInsertQuery($user);
+            $sql = "insert into usuario() values('$user->name', '$user->login', '$user->password', 'aaa')";
+            echo $sql;
 
-            $result = mysqli_query($this->connection, $sql);
-
-            if ($result == 1) {
+            if ($result = $this->connection->query($sql)) {
+                echo "Returned rows are: " . $result -> num_rows;
+                $result->free_result();
                 ?>
                 <script>
                     alert("Cadastro realizado com sucesso.");
-                    location.href="../../Views/Forms/index.html";
+                    location.href="../../Views/Home/index.html";
                 </script>
                 <?php
             } else {
+                $result->free_result();
                 ?>
                 <script>
                     alert('Erro no cadastro');

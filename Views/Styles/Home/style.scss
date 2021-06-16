@@ -74,3 +74,19 @@ $search-box-width: 500px;
     border-bottom-right-radius: 5px;
   }
 }
+
+.middle-content-wrapper {
+  width: 100vw;
+  height: 60vh;
+  background: rgb(207, 207, 207);
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+  .middle-content {
+    width: 99%;
+    height: 98%;
+    background: rgb(241, 239, 239);
+  }
+}
